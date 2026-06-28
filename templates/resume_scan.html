@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Resume Scan | ATS AI Analyzer</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <script defer
+            src="{{ url_for('static', filename='script.js') }}">
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="background-animation"></div>
+
+<div class="main-layout">
+
+    <aside class="sidebar">
+
+        <h2>ATS AI</h2>
+
+        <ul>
+
+            <a href="/dashboard">
+                <li>
+                    <i class="fa-solid fa-chart-line"></i>
+                    Dashboard
+                </li>
+            </a>
+
+            <a href="/resume_scan">
+                <li class="active">
+                    <i class="fa-solid fa-file-lines"></i>
+                    Resume Scan
+                </li>
+            </a>
+
+            <a href="/assistant">
+                <li>
+                    <i class="fa-solid fa-robot"></i>
+                    AI Assistant
+                </li>
+            </a>
+
+            <a href="/about">
+                <li>
+                    <i class="fa-solid fa-circle-info"></i>
+                    About Us
+                </li>
+            </a>
+
+        </ul>
+
+    </aside>
+
+    <main class="content">
+
+        <div class="hero">
+
+            <h1>Resume Scanner</h1>
+
+            <p>
+                Upload your resume and receive AI-powered ATS analysis,
+                keyword suggestions, strengths and weaknesses.
+            </p>
+
+        </div>
+
+        <div class="upload-card">
+
+            <form method="POST"
+                  enctype="multipart/form-data"
+                  onsubmit="showLoader()">
+
+                <div class="drop-zone">
+
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                    <h2>Upload Your Resume</h2>
+
+                    <p>Supported Formats: PDF, TXT</p>
+
+                    <input
+                        type="file"
+                        name="resume_file"
+                        accept=".pdf,.txt"
+                        required>
+
+                </div>
+
+                <button type="submit">
+
+                    Analyze Resume
+
+                </button>
+
+            </form>
+
+        </div>
+
+        <div id="loader"
+             class="loader-container">
+
+            <div class="loader"></div>
+
+            <p>
+                Gemini AI is analyzing your resume...
+            </p>
+
+        </div>
+
+        {% if analysis %}
+
+        <div class="results-grid">
+
+            <div class="score-card">
+
+                <h2>ATS Score</h2>
+
+                <div class="progress-ring">
+
+                    <svg width="220" height="220">
+
+                        <circle class="bg"
+                                cx="110"
+                                cy="110"
+                                r="90"></circle>
+
+                        <circle class="progress"
+                                cx="110"
+                                cy="110"
+                                r="90"
+                                style="stroke-dashoffset: calc(565 - (565 * {{ ats_score }}) / 100);">
+                        </circle>
+
+                    </svg>
+
+                    <div class="score-text">
+
+                        {{ ats_score }}%
+
+                    </div>
+
+                </div>
+
+                <canvas id="myChart"></canvas>
+
+            </div>
+
+            <div class="analysis-card">
+
+                <h2>AI Resume Report</h2>
+
+                <div id="analysisText">
+
+                    {{ analysis|safe }}
+
+                </div>
+
+                <div class="button-group">
+
+                    <button
+                        type="button"
+                        onclick="copyText()">
+
+                        Copy Report
+
+                    </button>
+
+                    <button
+                        type="button"
+                        onclick="downloadReport()">
+
+                        Download Report
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+    </main>
+
+</div>
+
+</body>
+
+</html>

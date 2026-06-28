@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Login - ATS AI Analyzer</title>
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body class="login-page">
+
+    <!-- ANIMATED BACKGROUND -->
+    <div class="background-animation"></div>
+
+
+    <!-- ========================= -->
+    <!-- NAVBAR -->
+    <!-- ========================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            <i class="fa-solid fa-brain"></i>
+
+            <span>ATS AI Analyzer</span>
+
+        </div>
+
+        <div class="nav-links">
+
+            <a href="/">
+                Home
+            </a>
+
+            <a href="/dashboard">
+                Dashboard
+            </a>
+
+            <a href="/assistant">
+                AI Assistant
+            </a>
+
+            <a href="/about">
+                About
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ========================= -->
+    <!-- LOGIN SECTION -->
+    <!-- ========================= -->
+
+    <section class="login-wrapper">
+
+        <!-- LEFT SIDE -->
+
+        <div class="login-info">
+
+            <div class="login-badge">
+
+                <i class="fa-solid fa-sparkles"></i>
+
+                Smart AI Resume Platform
+
+            </div>
+
+            <h1>
+
+                Welcome Back
+
+            </h1>
+
+            <p>
+
+                Login to access your ATS dashboard,
+                AI resume scanner,
+                and Gemini-powered career assistant.
+
+            </p>
+
+
+            <!-- FEATURE CARDS -->
+
+            <div class="login-feature-grid">
+
+                <div class="mini-feature-card">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                    <div>
+
+                        <h3>ATS Analysis</h3>
+
+                        <p>
+                            Smart resume scoring system
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="mini-feature-card">
+
+                    <i class="fa-solid fa-robot"></i>
+
+                    <div>
+
+                        <h3>AI Assistant</h3>
+
+                        <p>
+                            Real-time Gemini AI chatbot
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="mini-feature-card">
+
+                    <i class="fa-solid fa-file-arrow-up"></i>
+
+                    <div>
+
+                        <h3>Resume Scanner</h3>
+
+                        <p>
+                            Upload PDF resumes instantly
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT SIDE -->
+
+        <div class="login-form-section">
+
+            <div class="login-card">
+
+                <div class="login-icon">
+
+                    <i class="fa-solid fa-user-lock"></i>
+
+                </div>
+
+                <h2>
+
+                    Account Login
+
+                </h2>
+
+                <p class="login-subtitle">
+
+                    Enter your details to continue
+
+                </p>
+
+
+                <!-- LOGIN FORM -->
+
+                <form action="/dashboard"
+                      method="GET">
+
+                    <!-- NAME -->
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-user"></i>
+
+                        <input
+                            type="text"
+                            name="fullname"
+                            placeholder="Full Name"
+                            required>
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-envelope"></i>
+
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Email Address"
+                            required>
+
+                    </div>
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <input
+                            type="password"
+                            name="password"
+                            placeholder="Password"
+                            required>
+
+                    </div>
+
+
+                    <!-- LOGIN BUTTON -->
+
+                    <button
+                        type="submit"
+                        class="login-btn">
+
+                        <i class="fa-solid fa-right-to-bracket"></i>
+
+                        Login Now
+
+                    </button>
+
+                </form>
+
+
+                <!-- EXTRA LINKS -->
+
+                <div class="extra-links">
+
+                    <a href="#">
+                        Forgot Password?
+                    </a>
+
+                    <a href="#">
+                        Create Account
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</body>
+
+</html>
